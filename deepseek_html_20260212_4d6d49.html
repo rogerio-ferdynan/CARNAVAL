@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banda Explosão • Ensaio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (gratuito) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f9e800 0%, #ffb347 50%, #ff6b4a 100%);
+      font-family: 'Fredoka', sans-serif;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .painel-ensaio {
+      max-width: 1400px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 60px 60px 40px 40px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 25px 40px rgba(0,0,0,0.5), 0 0 0 6px rgba(255, 220, 50, 0.5), 0 0 0 12px rgba(255, 255, 255, 0.2);
+      border: 2px solid #ffe484;
+    }
+
+    /* cabeçalho explosivo */
+    .topo-banda {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      color: white;
+      text-shadow: 4px 4px 0 #c1292e, 2px 2px 0 #000;
+    }
+
+    .titulo-banda h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 4rem;
+      letter-spacing: 6px;
+      line-height: 1;
+      background: linear-gradient(45deg, #fff, #fff6b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+      margin-bottom: 0.2rem;
+    }
+
+    .ensaio-badge {
+      background: #ff2e5b;
+      padding: 0.5rem 1.8rem;
+      border-radius: 50px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: inline-block;
+      transform: rotate(-2deg);
+      border: 3px solid #ffe600;
+      box-shadow: 8px 8px 0 #5e0b15;
+      color: white;
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 3px;
+    }
+
+    .data-local {
+      background: #0d1321;
+      padding: 1.2rem 2rem;
+      border-radius: 30px;
+      color: #feda7a;
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-left: 10px solid #fabc3f;
+      box-shadow: 0 10px 0 #631c1c;
+    }
+
+    .data-local i {
+      margin-right: 8px;
+      color: #ffb347;
+    }
+
+    .repertorio-container {
+      background: rgba(255, 241, 184, 0.9);
+      background-image: repeating-linear-gradient(45deg, rgba(255,200,50,0.2) 0px, rgba(255,200,50,0.2) 5px, transparent 5px, transparent 15px);
+      border-radius: 50px 50px 30px 30px;
+      padding: 2rem 1.5rem;
+      margin: 2rem 0;
+      border: 5px solid #fff3b4;
+      box-shadow: inset 0 -8px 0 #e09d32, inset 0 2px 20px #ffe28c;
+    }
+
+    .blocos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .bloco {
+      background: #140f07;
+      border-radius: 40px 20px 40px 20px;
+      padding: 1.6rem 1.2rem;
+      box-shadow: 12px 12px 0 #ffb627, 0 0 0 3px white;
+      color: white;
+      transition: all 0.2s;
+      border-bottom: 8px solid #ffc857;
+    }
+
+    .bloco:hover {
+      transform: translateY(-8px);
+      box-shadow: 18px 18px 0 #ff9505;
+    }
+
+    .bloco-titulo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.9rem;
+      font-family: 'Bebas Neue', cursive;
+      background: #ffcd3c;
+      color: #1e1e1e;
+      padding: 0.3rem 1rem;
+      border-radius: 40px 10px 40px 10px;
+      margin-bottom: 1.4rem;
+      letter-spacing: 2px;
+      border: 2px solid #ffea9f;
+      text-shadow: 1px 1px 0 white;
+    }
+
+    .bloco-titulo i {
+      font-size: 2rem;
+      color: #a1222d;
+    }
+
+    .musicas-lista {
+      list-style: none;
+    }
+
+    .musicas-lista li {
+      padding: 0.45rem 0 0.45rem 0.8rem;
+      font-weight: 500;
+      border-bottom: 1px dashed #ffb85b;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      font-size: 0.98rem;
+    }
+
+    .musicas-lista li i {
+      color: #fed330;
+      font-size: 0.8rem;
+      width: 18px;
+      text-align: center;
+    }
+
+    .cachorro {
+      color: #fff6b0;
+      font-weight: 600;
+    }
+
+    .destaque-vs {
+      background: #ffc2c2;
+      color: #8b0000;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-left: 8px;
+      text-transform: uppercase;
+      border: 1px solid red;
+    }
+
+    .artista-tag {
+      background: #00b4d8;
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: black;
+      margin-left: 6px;
+      display: inline-block;
+      background: linear-gradient(145deg, #a7e0ff, #6ec1e0);
+      border: 1px solid black;
+    }
+
+    .programacao-carnaval {
+      margin-top: 3rem;
+      background: #021526;
+      border-radius: 60px 60px 30px 30px;
+      padding: 2.2rem 2rem;
+      color: white;
+      border: 5px solid #ffe270;
+      box-shadow: 0 0 30px #ffd966;
+    }
+
+    .programacao-titulo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      font-size: 2.8rem;
+      font-family: 'Bebas Neue', cursive;
+      color: #ffd966;
+      text-shadow: 5px 5px 0 #821a1a;
+      margin-bottom: 2rem;
+    }
+
+    .dias-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .dia-card {
+      background: #161f30;
+      padding: 1.5rem 1rem;
+      border-radius: 30px;
+      border-left: 15px solid #ffbc3b;
+      box-shadow: 10px 10px 0 #382007;
+    }
+
+    .dia-card h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      border-bottom: 3px dotted #ffa500;
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
+      color: #ffe083;
+    }
+
+    .atracoes {
+      list-style: none;
+    }
+
+    .atracoes li {
+      margin-bottom: 0.9rem;
+      font-weight: 500;
+    }
+
+    .fa-circle {
+      font-size: 0.6rem;
+      color: #f7d44a;
+      margin-right: 8px;
+    }
+
+    .banda-explosao-destaque {
+      background: #e34053;
+      padding: 0.8rem 1rem;
+      border-radius: 60px;
+      color: #ffe9a0;
+      font-weight: 900;
+      font-size: 1.4rem;
+      border: 4px solid white;
+      text-align: center;
+      margin-top: 2rem;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 3px;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); background: #c92a42; }
+      50% { transform: scale(1.02); background: #d6304c; box-shadow: 0 0 25px #ffc164; }
+      100% { transform: scale(1); background: #c92a42; }
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.4rem;
+      text-shadow: 3px 3px 0 #a13026;
+      background: #00000050;
+      padding: 0.8rem 2rem;
+      border-radius: 80px;
+      backdrop-filter: blur(5px);
+      border: 2px dashed #ffe28c;
+    }
+
+    .fa-regular, .fas, .far {
+      margin-right: 6px;
+    }
+
+    .numeracao {
+      background: #f8961e;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 900;
+      color: black;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="painel-ensaio">
+    <!-- cabeçalho foda -->
+    <div class="topo-banda">
+      <div class="titulo-banda">
+        <h1>🎤 BANDA EXPLOSÃO</h1>
+        <span class="ensaio-badge"><i class="fas fa-bolt"></i> ENSAIO ABERTO <i class="fas fa-bolt"></i></span>
+      </div>
+      <div class="data-local">
+        <span><i class="fas fa-location-dot"></i> PRAÇA DE EVENTOS • PRAIA DE MINAS</span>
+        <span><i class="fas fa-calendar-alt"></i> 13 a 16 FEVEREIRO</span>
+        <span><i class="fas fa-music"></i> TRIO ELÉTRICO + PALCO</span>
+      </div>
+    </div>
+    
+    <!-- REPERTÓRIO COMPLETO • BLOCO A BLOCO -->
+    <div class="repertorio-container">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.2rem; flex-wrap: wrap;">
+        <h2 style="font-family: 'Bebas Neue'; font-size: 2.8rem; color: #2d1b0a; text-shadow: 4px 4px 0 #ffbb57;"><i class="fas fa-list-check"></i> REPERTÓRIO OFICIAL <span style="background: black; color: #ffcd3c; padding: 0.2rem 1.2rem; border-radius: 40px; margin-left: 15px; font-size: 2rem;">BLOCO 01 → 09</span></h2>
+        <span style="background: #240a34; padding: 0.4rem 1.5rem; border-radius: 40px; color: #ffd93d; font-weight: bold; border: 3px solid yellow;"><i class="fas fa-user"></i> LAURA • LORRANA • MIRANDA </span>
+      </div>
+      
+      <div class="blocos-grid">
+        <!-- BLOCO 1 -->
+        <div class="bloco">
+          <div class="bloco-titulo"><i class="fas fa-sun"></i> BLOCO 01</div>
+          <ul class="musicas-lista">
+            <li><i class="fas fa-play"></i> 01. Viva a Vida <span class="artista-tag">LAURA</span></li>
+            <li><i class="fas fa-play"></i> 02. Mãozinha <span class="artista-tag">LORRANA</span></li>
+            <li><i class="fas fa-play"></i> 03. Coração <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 04. Eva/Alô Paixão/Beleza Rara <span class="artista-tag">LAURA</span></li>
+            <li><i class="fas fa-play"></i> 05. Araketu Bom Demais <span class="artista-tag">MIRANDA</span></li>
+          </ul>
+        </div>
+        <!-- BLOCO 2 -->
+        <div class="bloco">
+          <div class="bloco-titulo"><i class="fas fa-water"></i> BLOCO 02</div>
+          <ul class="musicas-lista">
+            <li><i class="fas fa-play"></i> 06. O Verão Bateu em Minha Porta <span class="artista-tag">LAURA</span></li>
+            <li><i class="fas fa-play"></i> 07. Maimbê Dandá <span class="artista-tag">LORRANA</span></li>
+            <li><i class="fas fa-play"></i> 08. Dandalunda <span class="artista-tag">LAURA</span></li>
+            <li><i class="fas fa-play"></i> 09. Praieiro <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 10. Bate Lata <span class="artista-tag">LORRANA</span></li>
+          </ul>
+        </div>
+        <!-- BLOCO 3 -->
+        <div class="bloco">
+          <div class="bloco-titulo"><i class="fas fa-crown"></i> BLOCO 03</div>
+          <ul class="musicas-lista">
+            <li><i class="fas fa-play"></i> 11. Vixe Mainha <span class="destaque-vs">VS</span> <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 12. Olodum Pra Balançar <span class="destaque-vs">VS</span> <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 13. Amor Perfeito <span class="artista-tag">LORRANA</span></li>
+            <li><i class="fas fa-play"></i> 14. Prefixo de Verão <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 15. Baianidade Nagô <span class="artista-tag">MIRANDA</span></li>
+          </ul>
+        </div>
+        <!-- BLOCO 4 -->
+        <div class="bloco">
+          <div class="bloco-titulo"><i class="fas fa-futbol"></i> BLOCO 04</div>
+          <ul class="musicas-lista">
+            <li><i class="fas fa-play"></i> 16. Joga o Laço <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 17. Joelhinho Cabeça <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 18. Dança do Põe Põe <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 19. Onda Onda <span class="artista-tag">LORRANA</span></li>
+            <li><i class="fas fa-play"></i> 20. Zona de Perigo <span class="artista-tag">LORRANA</span></li>
+          </ul>
+        </div>
+        <!-- BLOCO 5 -->
+        <div class="bloco">
+          <div class="bloco-titulo"><i class="fas fa-star"></i> BLOCO 05</div>
+          <ul class="musicas-lista">
+            <li><i class="fas fa-play"></i> 21. A Cor da Cidade <span class="destaque-vs">VS</span> <span class="artista-tag">LAURA</span></li>
+            <li><i class="fas fa-play"></i> 22. Ziriguidum <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 23. Faraó/Doce Obsessão <span class="destaque-vs">VS</span> <span class="artista-tag">MIRANDA/LORRANA</span></li>
+            <li><i class="fas fa-play"></i> 24. Tchau I Have To Go Now <span class="destaque-vs">VS</span> <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 25. Trio Metal <span class="artista-tag">LAURA</span></li>
+          </ul>
+        </div>
+        <!-- BLOCO 6 -->
+        <div class="bloco">
+          <div class="bloco-titulo"><i class="fas fa-hand-peace"></i> BLOCO 06</div>
+          <ul class="musicas-lista">
+            <li><i class="fas fa-play"></i> 26. Chupa Toda <span class="artista-tag">LAURA</span></li>
+            <li><i class="fas fa-play"></i> 26. Dudu Calypso <span class="artista-tag">LAURA</span></li>
+            <li><i class="fas fa-play"></i> 27. Uipitipiti <span class="destaque-vs">VS</span> <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 28. Margarida Perfumada <span class="artista-tag">LORRANA</span></li>
+            <li><i class="fas fa-play"></i> 29. Manivela/Vampiro <span class="artista-tag">LORRANA/LAURA</span></li>
+          </ul>
+        </div>
+        <!-- BLOCO 7 -->
+        <div class="bloco">
+          <div class="bloco-titulo"><i class="fas fa-heart"></i> BLOCO 07</div>
+          <ul class="musicas-lista">
+            <li><i class="fas fa-play"></i> 31. Amor Infinito <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 32. Na Base do Beijo <span class="artista-tag">LORRANA</span></li>
+            <li><i class="fas fa-play"></i> 33. Luz de Tieta <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 34. Haja Amor <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 35. Arêrê/Levada Louca <span class="artista-tag">LAURA</span></li>
+          </ul>
+        </div>
+        <!-- BLOCO 8 -->
+        <div class="bloco">
+          <div class="bloco-titulo"><i class="fas fa-rocket"></i> BLOCO 08</div>
+          <ul class="musicas-lista">
+            <li><i class="fas fa-play"></i> 36. O Mundo Vai/Teleguiado <span class="destaque-vs">VS</span> <span class="artista-tag">LAURA</span></li>
+            <li><i class="fas fa-play"></i> 37. Simbora Aê <span class="destaque-vs">VS</span> <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 38. Energia de Gostosa <span class="artista-tag">LORRANA</span></li>
+            <li><i class="fas fa-play"></i> 39. Macetando <span class="artista-tag">LAURA</span></li>
+          </ul>
+        </div>
+        <!-- BLOCO 9 -->
+        <div class="bloco">
+          <div class="bloco-titulo"><i class="fas fa-umbrella-beach"></i> BLOCO 09</div>
+          <ul class="musicas-lista">
+            <li><i class="fas fa-play"></i> 40. Caranguejo <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 41. Swing do Araketu <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 42. Durvalino/Nanaê <span class="artista-tag">MIRANDA</span></li>
+            <li><i class="fas fa-play"></i> 43. Porto Seguro <span class="artista-tag"></span></li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 1.8rem; background: #ee8434; padding: 0.5rem; border-radius: 50px; text-align: center; color: #1e1e1e; font-weight: 800; border: 3px solid black;"><i class="fas fa-check-circle"></i> TOTAL: 43 MÚSICAS • ENSAIO GERAL • BANDA EXPLOSÃO 100%</p>
+    </div>
+    
+    <!-- PROGRAMAÇÃO CARNAVAL PRAIA DE MINAS -->
+    <div class="programacao-carnaval">
+      <div class="programacao-titulo">
+        <i class="fas fa-mask"></i> VEM AÍ – CARNAVAL PRAIA DE MINAS <i class="fas fa-mask"></i>
+      </div>
+      <div style="text-align: center; margin-bottom: 2rem; background: #ffd966; padding: 0.8rem; border-radius: 80px; color: black; font-weight: 900; font-size: 1.5rem; border: 4px solid #c12f2f;">
+        <i class="fas fa-truck"></i> SOM AUTOMOTIVO 14H • TRIO 16H • PALCO PRINCIPAL 23H
+      </div>
+      <div class="dias-grid">
+        <div class="dia-card">
+          <h3>🔥 SEXTA 13/02</h3>
+          <ul class="atracoes">
+            <li><i class="fas fa-circle"></i> 21h – Lu Fossi (Trio)</li>
+            <li><i class="fas fa-circle"></i> 23h – <strong>NETINHO</strong> (Palco)</li>
+            <li><i class="fas fa-circle"></i> 01h – DJ Romário Campos</li>
+          </ul>
+        </div>
+        <div class="dia-card">
+          <h3>⚡ SÁBADO 14/02</h3>
+          <ul class="atracoes">
+            <li><i class="fas fa-circle"></i> 18h – Rick Rezende</li>
+            <li><i class="fas fa-circle"></i> 20h30 – Jeito Diferente</li>
+            <li><i class="fas fa-circle"></i> 23h – <strong>RAPAZOLLA</strong></li>
+            <li><i class="fas fa-circle"></i> 01h – DJ FP</li>
+          </ul>
+        </div>
+        <div class="dia-card">
+          <h3>✨ DOMINGO 15/02</h3>
+          <ul class="atracoes">
+            <li><i class="fas fa-circle"></i> 16h – Laiz e Mozair</li>
+            <li><i class="fas fa-circle"></i> 18h – Jeremias</li>
+            <li><i class="fas fa-circle"></i> 20h30 – Swing Total</li>
+            <li><i class="fas fa-circle"></i> 23h – <strong>BAIANAS OZADAS</strong></li>
+          </ul>
+        </div>
+        <div class="dia-card">
+          <h3>💥 SEGUNDA 16/02</h3>
+          <ul class="atracoes">
+            <li><i class="fas fa-circle"></i> 17h30 – Grilo de Roupa</li>
+            <li><i class="fas fa-circle"></i> 20h – Oba Oba Samba House</li>
+            <li><i class="fas fa-circle"></i> 23h – <span style="background: #ffcd3c; color: black; padding: 0.3rem 0.8rem; border-radius: 40px;"><i class="fas fa-bolt"></i> BANDA EXPLOSÃO <i class="fas fa-bolt"></i></span></li>
+            <li><i class="fas fa-circle"></i> 01h – Luk Louiz</li>
+          </ul>
+        </div>
+      </div>
+      <div class="banda-explosao-destaque">
+        <i class="fas fa-star"></i> BANDA EXPLOSÃO ENCERRA O CARNAVAL! 23h - PALCO PRINCIPAL <i class="fas fa-star"></i>
+      </div>
+    </div>
+    
+    <!-- FOOTER CARNAVALIZADO -->
+    <footer>
+      <span style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+        <span><i class="fas fa-glitter"></i> É FANTASIA! </span>
+        <span><i class="fas fa-sparkles"></i> É GLITTER! </span>
+        <span><i class="fas fa-microphone-alt"></i> É CANTAR JUNTO! </span>
+        <span><i class="fas fa-heart"></i> EMOÇÃO DO COMEÇO AO FIM! </span>
+      </span>
+    </footer>
+  </div>
+  <!-- efeito brilho (extra) -->
+  <div style="margin-top: 20px; font-size: 1.2rem; color: white; font-weight: bold; text-align: center; text-shadow: 2px 2px 0 black;">
+    🎭 PRAIA DE MINAS • O MAIOR CARNAVAL DO CENTRO-OESTE MG • VAI TREMER! 🎭
+  </div>
+</body>
+</html>
